@@ -1,82 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
+
+* { box-sizing: border-box; }
+
 html,
 body {
-	font-family: Arial, sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	color: #303030;
 	height: 100%;
 	margin: 0;
 	padding: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 900;
+	line-height: 110%;
+	text-transform: uppercase;
+	margin: 0 0 1em 0;
+}
+
+h1 { font-size: 30px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+h4 { font-size: 16px; }
+h5 { font-size: 14px; }
+h6 { font-size: 12px; }
+
 .container {
+	display: flex;
 	height: 100%;
+	min-height: 100vh;
 	position: relative;
 }
 
-input {
-	font-size: 12px;
+.card-container {
+	background-color: #fff;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.253);
+	margin: 2em 0;
 }
 
-h1 {
-	color: #525454;
-	font-size: 22px;
-	margin: 0 0 10px 0;
-	text-align: center;
-}
-
-#hide-listings,
-#show-listings {
-	width: 48%;
-}
-
-hr {
-	background: #D0D7D9;
-	height: 1px;
-	margin: 20px 0 20px 0;
-	border: none;
-}
-
-#map {
-	bottom: 0px;
-	height: 100%;
-	left: 362px;
-	position: absolute;
-	right: 0px;
-}
-
-.options-box {
-	background: #fff;
-	border: 1px solid #999;
-	border-radius: 3px;
-	height: 100%;
-	line-height: 35px;
-	padding: 10px 10px 30px 10px;
-	text-align: left;
-	width: 340px;
-}
-
-#pano {
-	width: 200px;
-	height: 200px;
-}
-
-#places-search,
-#search-within-time-text {
-	width: 84%;
-}
-
-.text {
-	font-size: 12px;
-}
-
-#toggle-drawing {
-	width: 27%;
-	position: relative;
-	margin-left: 10px;
-}
-
-#zoom-to-area-text {
-	width: 70%;
-}
-
-#zoom-to-area {
-	width: 24%;
+.card-title {
+	border-bottom: 1px solid #ccc;
+	display: block;
+	font-size: 20px;
+	font-weight: 900;
+	line-height: 22px;
+	margin: 0;
+	padding: 1em;
+	text-transform: uppercase;
 }
