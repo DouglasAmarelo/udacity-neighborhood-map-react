@@ -1,0 +1,23 @@
+.message {
+	align-self: center;
+	font-size: 18px;
+	text-align: center;
+	/* text-transform: uppercase; */
+	white-space: pre;
+	width: 100%;
+}
+
+.message.error { color: #d00; }
+.message.loading { color: #000; }
+.message.success { color: #0d0; }
+
+.message__text {
+	animation: pulse 2s infinite;
+	display: inline-block;
+}
+
+@keyframes pulse {
+	0% { transform: scale3d(1, 1, 1); }
+	50% { transform: scale3d(1.05, 1.05, 1.05); }
+	100% { transform: scale3d(1, 1, 1); }
+}

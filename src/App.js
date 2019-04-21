@@ -6,9 +6,10 @@ import Map from './components/Map/Map';
 import keys from './utils/keys.json';
 
 import './App.css';
+import Message from './components/Message/Message';
 
 const GOOGLE_MAPS_API_KEY = keys[0].googleMaps;
-const GOOGLE_MAPS_API_URL = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&v=3&libraries=geometry,places`;
+const GOOGLE_MAPS_API_URL = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&v=3`;
 
 class App extends Component {
 	state = {
@@ -19,14 +20,21 @@ class App extends Component {
 			lng: -46.6918614
 		},
 		searchQuery: '',
-		restaurantInfoId: ''
+		restaurantInfoId: '',
+		mapError: false,
+		restaurantsError: false
 	};
 
 	componentDidMount() {
 		this.getForSquareRestaurants();
+
 		window.gm_authFailure = () => {
 			this.setState({ mapError: true });
 		};
+	};
+
+	static getDerivedStateFromError(error) {
+		return { mapError: true };
 	};
 
 	getForSquareRestaurants = () => {
@@ -58,9 +66,15 @@ class App extends Component {
 			this.setState({
 				restaurants: restaurants,
 				activeRestaurants: restaurants,
+				mapError: false
 			});
+
+			return restaurants;
 		})
-		.catch(err => console.error("Error: ", err));
+		.catch(err => {
+			this.setState({ restaurantsError: true });
+			console.log("@@@ Error: ", err);
+		});
 	};
 
 	filterRestaurants = (searchTerm) => {
@@ -83,7 +97,14 @@ class App extends Component {
 	};
 
 	render() {
-		const { activeRestaurants, restaurants, restaurantInfoId, mapCenter } = this.state;
+		const {
+			activeRestaurants,
+			restaurants,
+			restaurantInfoId,
+			mapCenter,
+			mapError,
+			restaurantsError
+		} = this.state;
 
 		return (
 			<div className="App container">
@@ -91,23 +112,55 @@ class App extends Component {
 					activeRestaurants={activeRestaurants}
 					filterRestaurants={this.filterRestaurants}
 					openRestaurantInfo={this.openRestaurantInfo}
+					restaurantsError={restaurantsError}
 				/>
 
-				<Map
-					activeRestaurants={activeRestaurants}
-					restaurants={restaurants}
-					restaurantInfoId={restaurantInfoId}
-					mapCenter={mapCenter}
-					openRestaurantInfo={this.openRestaurantInfo}
-					loadingElement={ <div style={{ height: `100%` }}></div> }
-					containerElement={ <div id="map" className="map" role="application" tabIndex="0"></div> }
-					mapElement={ <div style={{ height: `100%` }}></div>}
-					googleMapURL={GOOGLE_MAPS_API_URL}
-				/>
+				{
+					!mapError && (
+						<Map
+							activeRestaurants={activeRestaurants}
+							restaurants={restaurants}
+							restaurantInfoId={restaurantInfoId}
+							mapCenter={mapCenter}
+							openRestaurantInfo={this.openRestaurantInfo}
+							googleMapURL={GOOGLE_MAPS_API_URL}
+							loadingElement={
+								<Message
+									type="loading"
+									text="Loading..."
+								/>
+							}
+							containerElement={
+								<div
+									id="map"
+									className="map"
+									role="application"
+									tabIndex="0"
+								>
+								</div>
+							}
+							mapElement={
+								<div style={{ height: `100%` }}></div>
+							}
+						/>
+					)
+				}
+
+				{
+					mapError && (
+						<Message
+							type="error"
+							text="
+								We're sorry, we had a problem.
+								Please reload the page or try again later.
+							"
+						/>
+					)
+				}
 			</div>
 		);
-	}
-}
+	};
+};
 
 export default App;
 

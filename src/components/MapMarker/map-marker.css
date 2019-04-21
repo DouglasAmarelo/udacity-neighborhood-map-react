@@ -35,3 +35,37 @@
 .map-marker-info__address p {
 	margin: 8px 0;
 }
+
+.map-marker-info__rights {
+	font-size: 10px;
+	padding-top: 1em;
+	text-align: center;
+}
+
+.map-marker-info__rights p {
+	margin: 0;
+	line-height: 12px;
+}
+
+.foursquare-logo {
+	color: #f94777;
+	display: inline-block;
+	padding: .5em 2.5em;
+	position: relative;
+}
+
+.foursquare-logo:before {
+	background: transparent url('../../images/foursquare-logo-20x20.png') center center no-repeat;
+	background-size: contain;
+	content: '';
+	display: block;
+	height: 20px;
+	left: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+}
+
+
+

@@ -11,16 +11,17 @@ const Filter = ({ label, filterRestaurants }) => {
 			>
 				{label}
 			</label>
+
 			<input
 				className="filter-field"
 				id="filter"
 				type="text"
-				aria-label="Filter places"
-				placeholder="Filter places"
+				aria-label={label}
+				placeholder={label}
 				onInput={e => filterRestaurants(e.target.value)}
 			/>
 		</div>
-	)
-}
+	);
+};
 
 export default Filter;

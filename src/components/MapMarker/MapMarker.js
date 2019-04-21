@@ -16,42 +16,59 @@ const MapMarker = ({ restaurant, restaurantInfoId, openRestaurantInfo }) => (
 		}}
 		onClick={() => openRestaurantInfo(restaurant.id)}
 	>
-		{restaurantInfoId === restaurant.id && (
-			<InfoWindow
-				key={restaurant.id}
-				options={{ maxWidth: 350 }}
-				onCloseClick={() => openRestaurantInfo(restaurant.id)}
-			>
-				<article className="map-marker-info" tabIndex="0">
-					<div className="map-marker-info__category">
-						<img
-							className="map-marker-info__category-image"
-							src={restaurant.categories[0].icon.prefix + '32' + restaurant.categories[0].icon.suffix}
-							alt={restaurant.categories[0].name}
-							height="32"
-							width="32"
-						/>
-						{restaurant.categories[0].name}
-					</div>
+		{
+			restaurantInfoId === restaurant.id && (
+				<InfoWindow
+					key={restaurant.id}
+					options={{ maxWidth: 350 }}
+					onCloseClick={() => openRestaurantInfo('')}
+				>
+					<article className="map-marker-info" tabIndex="0">
+						<div className="map-marker-info__category">
+							<img
+								className="map-marker-info__category-image"
+								src={restaurant.categories[0].icon.prefix + '32' + restaurant.categories[0].icon.suffix}
+								alt={restaurant.categories[0].name}
+								height="32"
+								width="32"
+							/>
+							{restaurant.categories[0].name}
+						</div>
 
-					<a
-						className="map-marker-info__name"
-						href={`https://foursquare.com/v/${restaurant.id}`}
-						title={restaurant.name}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<strong>{restaurant.name}</strong>
-					</a>
+						<a
+							className="map-marker-info__name"
+							href={`https://foursquare.com/v/${restaurant.id}`}
+							title={restaurant.name}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<strong>{restaurant.name}</strong>
+						</a>
 
-					<div className="map-marker-info__address">
-						<p><strong>Address: </strong>{restaurant.location.formattedAddress[0]}</p>
-						<p><strong>City: </strong>{restaurant.location.formattedAddress[1]}</p>
-						<p><strong>Postal code: </strong>{restaurant.location.formattedAddress[2]}</p>
-					</div>
-				</article>
-			</InfoWindow>
-		)}
+						<div className="map-marker-info__address">
+							<p><strong>Address: </strong>{restaurant.location.formattedAddress[0]}</p>
+							<p><strong>City: </strong>{restaurant.location.formattedAddress[1]}</p>
+							<p><strong>Postal code: </strong>{restaurant.location.formattedAddress[2]}</p>
+						</div>
+
+						<div className="map-marker-info__rights">
+							<p>
+								Information by <br/>
+								<a
+									className="foursquare-logo"
+									href="https://developer.foursquare.com/docs"
+									title="Foursquare"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Foursquare
+								</a>
+							</p>
+						</div>
+					</article>
+				</InfoWindow>
+			)
+		}
 	</Marker>
 );
 
