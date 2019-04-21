@@ -20,12 +20,15 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-After that, You may serve the build folder with a static server:
+After that, you may serve the build folder with a static server:
 
 ### `npm i -g serve`
 ### `serve -s build`
 
 Open [http://localhost:5000/](http://localhost:5000/) to view it in the browser.
+
+## Production
+You can also see [this project working here](https://douglas-lopes-udacity-neighborhood-map-react.netlify.com/), hosted and deployed using [Netlify](https://www.netlify.com/).
 
 
 ## This project was developed using
