@@ -1,0 +1,37 @@
+.map-marker-info {
+	padding: .8em;
+	max-width: 250px;
+}
+
+.map-marker-info__category {
+	align-items: center;
+	border: 1px solid #ccc;
+	color: #5f5f5f;
+	display: flex;
+	font-size: 12px;
+}
+
+.map-marker-info__category-image {
+	background-color: #ccc;
+	display: block;
+	margin-right: 10px;
+}
+
+.map-marker-info__name {
+	color: #303030;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	margin: 1.5em 0 1em 0;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.map-marker-info__address {
+	background-color: #f5f5f5;
+	padding: 1em;
+}
+
+.map-marker-info__address p {
+	margin: 8px 0;
+}

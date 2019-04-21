@@ -1,20 +1,26 @@
-import React, { Component } from 'react';
-import './sidebar.css';
+import React from 'react';
+
 import RestaurantList from '../RestaurantList/RestaurantList';
 import Filter from '../Filter/Filter';
 
-class Sidebar extends Component {
-	render() {
-		const content = [ 'Lorem, ipsum dolor sit amet', 'Voluptatem impedit', 'Consectetur adipisicing elit.', 'Totam eius', 'Fugiat expedita laudantium', 'Nesciunt dignissimos', 'Lorem, ipsum dolor sit amet', 'Voluptatem impedit', 'Consectetur adipisicing elit.', 'Totam eius', 'Lorem, ipsum dolor sit amet', 'Voluptatem impedit', 'Consectetur adipisicing elit.', 'Totam eius', 'Fugiat expedita laudantium', 'Nesciunt dignissimos', 'Lorem, ipsum dolor sit amet', 'Voluptatem impedit', 'Consectetur adipisicing elit.', 'Totam eius', 'Fugiat expedita laudantium', 'Lorem, ipsum dolor sit amet', 'Voluptatem impedit', 'Consectetur adipisicing elit.', 'Totam eius', 'Fugiat expedita laudantium', 'Nesciunt dignissimos', 'Lorem, ipsum dolor sit amet', 'Voluptatem impedit', 'Consectetur adipisicing elit.', 'Totam eius', 'Lorem, ipsum dolor sit amet', 'Voluptatem impedit', 'Consectetur adipisicing elit.', 'Totam eius', 'Fugiat expedita laudantium', 'Nesciunt dignissimos', 'Lorem, ipsum dolor sit amet', 'Voluptatem impedit', 'Consectetur adipisicing elit.', 'Totam eius', 'Fugiat expedita laudantium', ];
+import './sidebar.css';
 
-		return (
-			<aside className="sidebar">
-				<h1>Best restaurants in Sócrates Street</h1>
-				<Filter label="Filter for an place" />
-				<RestaurantList restaurants={content} />
-			</aside>
-		)
-	}
+const Sidebar = ({ activeRestaurants, filterRestaurants, openRestaurantInfo }) => {
+	return (
+		<aside className="sidebar">
+			<h1 tabIndex="0">Best restaurants in Sócrates Street</h1>
+
+			<Filter
+				label="Filter your restaurant"
+				filterRestaurants={filterRestaurants}
+			/>
+
+			<RestaurantList
+				restaurants={activeRestaurants}
+				openRestaurantInfo={openRestaurantInfo}
+			/>
+		</aside>
+	)
 }
 
 export default Sidebar;

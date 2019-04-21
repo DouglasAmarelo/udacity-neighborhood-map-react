@@ -1,17 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './filter.css';
 
-class Filter extends Component {
-	render() {
-		const { label } = this.props;
-
-		return(
-			<div className="filter card-container">
-				<label className="card-title" htmlFor="filter">{label}</label>
-				<input className="filter-field" id="filter" type="text" placeholder="Filter places" />
-			</div>
-		)
-	}
+const Filter = ({ label, filterRestaurants }) => {
+	return(
+		<div className="filter card-container">
+			<label
+				className="card-title"
+				htmlFor="filter"
+				tabIndex="0"
+			>
+				{label}
+			</label>
+			<input
+				className="filter-field"
+				id="filter"
+				type="text"
+				aria-label="Filter places"
+				placeholder="Filter places"
+				onInput={e => filterRestaurants(e.target.value)}
+			/>
+		</div>
+	)
 }
 
 export default Filter;
